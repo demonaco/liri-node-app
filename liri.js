@@ -4,7 +4,9 @@ var keys = require("./keys.js");
 
 var spotify = new Spotify(keys.spotify);
 
-var inquirer = require("inquirer");
+var inquirer = require('inquirer');
+
+var fs = require('fs');
 
 var spotifyApi = 
 
@@ -54,3 +56,39 @@ function mainMenu() {
         })
 }
 
+
+function findShow(){
+    case concert-this:
+    var artist = process.argv[2]
+    //API call with artist as part of the URLquery
+    var urlQuery = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+
+}
+
+function listenSong(){
+    case spotify-this-song:
+    var artist = process.argv[2]
+    //API call with artist as part of the URLquery
+    var urlQuery =
+
+}
+
+function omdbList(){
+    case movie-this:
+    var artist = process.argv[2]
+    //API call with artist as part of the URLquery
+    var urlQuery =
+
+}
+//users searches catalogued in random.txt
+
+
+fs.readFile("random.txt", "utf8", function (error, data){
+
+    if (error) {
+        return console.log (error);
+    }
+
+    console.log(data);
+   var dataArr = data.split(",");
+});
