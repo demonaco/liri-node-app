@@ -10,7 +10,7 @@ var fs = require('fs');
 
 var axios = require('axios');
 
-var spotifyCall = 
+var Spotify = require('node-spotify-api');
 
 var omdbCall = 
 
@@ -59,13 +59,13 @@ function mainMenu() {
         })
 }
 
-
+//Bands in town API request
 function findShow(){
     case concert-this:
-    var artist = process.argv[2]
+    var artist = process.argv[3]
     //API call with artist as part of the URLquery
     var urlQuery = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
+    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(function(resonse) {
         console.log(response.data.venue.name);
         console.log(response.data.venue.city);
         console.log(response.data.datetime);
@@ -88,42 +88,37 @@ function findShow(){
     
 }
 
+//Spotify song request
 function listenSong(){
     case spotify-this-song:
-    var artistSee = process.argv[2]
+    var song = process.argv[3]
     //API call with artist as part of the URLquery
-    var urlQuery = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300"
-    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
-    console.log(response.data.title);
-    console.log(response.data.year);
-    console.log(response.data.imdbRating);
-    console.log(response.data.ratings[1]);
-    console.log(response.data.country);
-    console.log(response.data.language);
-    console.log(response.data.plot);
-    console.log(response.data.actors);
-    })
-    .catch(function(error){
-        if (error.response) {
-            console.log("--------Data-----");
-            console.log(error.response.data);
-            console.log("--------Status------");
-            console.log(error.response.status);
-            console.log("------Status-----");
-            console.log(error.response.headers);
-        } else if (error.request) {
-            console.log(error.request);
-        } else {
-            console.log("Error", error.message);
-        }
-        console.log(error.config);
-    })
-
-}
+// axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
+    // spotify.search({
+    //     type: 'track',
+    //     query: song
+    // })
+    // .then(function(response) {
+    //     console.log(response);
+    // })
+    // .catch(function(err) {
+    //     console.log(err);
+    // });
+ spotify.search({ type: 'artist OR album OR track', query: song, limit: 20 }, callback);
+ console.log("response.data")
+spotify.request("https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx")
+.then(function(data) {
+    console.log(data);
+})
+.catch(function(err) {
+    console.error('Error occured: ' + err);
+});
+// }
+//OMBD call
 
 function omdbList(){
     case movie-this:
-    var movieName = process.argv[2]
+    var movieName = process.argv[3]
     //API call with movie as part of the URLquery
     var urlQuery = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300"
     axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
