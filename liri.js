@@ -8,11 +8,14 @@ var inquirer = require('inquirer');
 
 var fs = require('fs');
 
-var spotifyApi = 
+var axios = require('axios');
 
-var omdbApi = 
+var spotifyCall = 
 
-var bandsInTownApi =
+var omdbCall = 
+
+var bandsInTownCall =
+
 
 
     start()
@@ -62,26 +65,100 @@ function findShow(){
     var artist = process.argv[2]
     //API call with artist as part of the URLquery
     var urlQuery = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-
+    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
+        console.log(response.data.venue.name);
+        console.log(response.data.venue.city);
+        console.log(response.data.datetime);
+        })
+        .catch(function(error){
+            if (error.response) {
+                console.log("--------Data-----");
+                console.log(error.response.data);
+                console.log("--------Status------");
+                console.log(error.response.status);
+                console.log("------Status-----");
+                console.log(error.response.headers);
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log("Error", error.message);
+            }
+            console.log(error.config);
+        })
+    
 }
 
 function listenSong(){
     case spotify-this-song:
-    var artist = process.argv[2]
+    var artistSee = process.argv[2]
     //API call with artist as part of the URLquery
-    var urlQuery =
+    var urlQuery = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300"
+    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
+    console.log(response.data.title);
+    console.log(response.data.year);
+    console.log(response.data.imdbRating);
+    console.log(response.data.ratings[1]);
+    console.log(response.data.country);
+    console.log(response.data.language);
+    console.log(response.data.plot);
+    console.log(response.data.actors);
+    })
+    .catch(function(error){
+        if (error.response) {
+            console.log("--------Data-----");
+            console.log(error.response.data);
+            console.log("--------Status------");
+            console.log(error.response.status);
+            console.log("------Status-----");
+            console.log(error.response.headers);
+        } else if (error.request) {
+            console.log(error.request);
+        } else {
+            console.log("Error", error.message);
+        }
+        console.log(error.config);
+    })
 
 }
 
 function omdbList(){
     case movie-this:
-    var artist = process.argv[2]
-    //API call with artist as part of the URLquery
-    var urlQuery =
-
+    var movieName = process.argv[2]
+    //API call with movie as part of the URLquery
+    var urlQuery = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300"
+    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(resonse) {
+    console.log(response.data.title);
+    console.log(response.data.year);
+    console.log(response.data.imdbRating);
+    console.log(response.data.ratings[1]);
+    console.log(response.data.country);
+    console.log(response.data.language);
+    console.log(response.data.plot);
+    console.log(response.data.actors);
+    })
+    .catch(function(error){
+        if (error.response) {
+            console.log("--------Data-----");
+            console.log(error.response.data);
+            console.log("--------Status------");
+            console.log(error.response.status);
+            console.log("------Status-----");
+            console.log(error.response.headers);
+        } else if (error.request) {
+            console.log(error.request);
+        } else {
+            console.log("Error", error.message);
+        }
+        console.log(error.config);
+    })
 }
-//users searches catalogued in random.txt
 
+//Axios calls
+
+
+
+
+//liri do-what-it-says
 
 fs.readFile("random.txt", "utf8", function (error, data){
 
