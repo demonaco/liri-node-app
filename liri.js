@@ -8,26 +8,16 @@ var fs = require('fs');
 
 var axios = require('axios');
 
-var Spotify = require('node-spotify-api');
+var Spotify = require("node-spotify-api");
 
-var directory = process.argv[2];
-
-var userSelect = process.argv[3];
-
-
-// var omdbCall = 
-
-// var bandsInTownCall =
-
-
-
+ 
     start()
 function start() {
     console.log("Testing 123")
     mainMenu();
 }
 
-function mainMenu(directory, userSelect) {
+function mainMenu(directory, data) {
             switch (directory) {
                 //bands in town function
                 case "Find-a-show":
@@ -55,8 +45,7 @@ function mainMenu(directory, userSelect) {
                     console.log("Later dude!");
 
             }
-        })
-
+        }
 
 function bandsChoice(){
     var findAShow = process.argv[2];
@@ -67,7 +56,7 @@ function bandsChoice(){
 }
 
 //Bands in town API request
-function findShow(){
+function findShow(data){
     
     var artist = process.argv.slice(3).join("");
     //API call with artist as part of the URLquery
@@ -77,7 +66,7 @@ function findShow(){
         console.log(response.data.venue.city);
         console.log(response.data.datetime);
         })
-        .catch(function(error){
+        .catch(function(error) {
             if (error.response) {
                 console.log("--------Data-----");
                 console.log(error.response.data);
@@ -92,27 +81,15 @@ function findShow(){
             }
             console.log(error.config);
         })
-    
-}
+    }
 
 //Spotify song request
-function listenSong(){
+function listenSong(data){
     var song = process.argv.slice(3).join("");
-    //API call with artist as part of the URLquery
-// axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=834c9300").then(function(response) {
-    // spotify.search({
-    //     type: 'track',
-    //     query: song
-    // })
-    // .then(function(response) {
-    //     console.log(response);
-    // })
-    // .catch(function(err) {
-    //     console.log(err);
-    // });
  spotify.search({ type: 'artist OR album OR track', query: song, limit: 20 }, callback);
  console.log("response.data")
-// }
+}
+
 //OMBD call
 
 function omdbList(){
@@ -157,9 +134,8 @@ function backstreetsback(){
     })
 };
 
-
 //write information over to random.txt
-function saveText(){
+function saveText() {
 fs.writeFile("random.txt", userSelect, function (error, data){
 
     if (error) {
@@ -168,5 +144,5 @@ fs.writeFile("random.txt", userSelect, function (error, data){
 
     console.log(data);
    var dataArr = data.split(",");
+})
 }
-)};
