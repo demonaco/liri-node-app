@@ -27,16 +27,8 @@ function start() {
     mainMenu();
 }
 
-function mainMenu() {
-        {
-            type: "list",
-            message: "Hey there dude! Which rockin' option do you choose?",
-            choices: ["Find a show", "Listen to a song", "Search for Film or show", "Leave"]
-        }
-
-        .then(function (directory, userSelect) {
+function mainMenu(directory, userSelect) {
             switch (directory) {
-
                 //bands in town function
                 case "Find-a-show":
                     findShow(data);
@@ -51,6 +43,12 @@ function mainMenu() {
                     omdbList(data);
                     break;
 
+                    //default to Backstreet Boys
+                case "do-what-it-says":
+                     backstreetsback(data);
+                     break;
+
+
                 //leave
 
                 case "Leave":
@@ -58,7 +56,6 @@ function mainMenu() {
 
             }
         })
-}
 
 
 function bandsChoice(){
@@ -115,13 +112,6 @@ function listenSong(){
     // });
  spotify.search({ type: 'artist OR album OR track', query: song, limit: 20 }, callback);
  console.log("response.data")
-spotify.request("https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx")
-.then(function(data) {
-    console.log(data);
-})
-.catch(function(err) {
-    console.error('Error occured: ' + err);
-});
 // }
 //OMBD call
 
@@ -157,9 +147,20 @@ function omdbList(){
 }
 
 //liri do-what-it-says
+function backstreetsback(){
+    spotify.request("https://api.spotify.com/v1/tracks/")
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(err) {
+        console.error('Error occured: ' + err);
+    })
+};
 
+
+//write information over to random.txt
 function saveText(){
-fs.readFile("random.txt", "utf8", + userSelect, function (error, data){
+fs.writeFile("random.txt", userSelect, function (error, data){
 
     if (error) {
         return console.log (error);
