@@ -25,7 +25,7 @@ var media = process.argv.slice(3).join(" ");
 
 switch (directory) {
     //bands in town function
-    case "Find-a-show":
+    case "Findcle-a-show":
         findShow(media);
         break;
     //spotify function
@@ -87,6 +87,7 @@ function findShow(artist) {
 function listenSong(song) {
 
     spotify.search({ type: "track", query: song, limit: 20 }).then(function (response) {
+
         console.log(response.tracks.items[0].artists);
         console.log(song);
         console.log(response.tracks.items[0].external_urls);
@@ -109,7 +110,7 @@ function listenSong(song) {
 }
 
     function replacesong() {
-        if (process.argv[3] == undefined);
+        if (process.argv[3] !== undefined);
         // if (song == NaN || song == null || song == "" || song == undefined) {
             listenSong("The sign ace of base")
         }
