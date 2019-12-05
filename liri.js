@@ -35,7 +35,6 @@ switch (directory) {
 
     case "Search-for-Film-or-show":
         omdbList(media);
-        mrNobody();
         break;
 
     //default to Backstreet Boys
@@ -58,10 +57,10 @@ function findShow(artist) {
     console.log(artist)
     //API call with artist as part of the URLquery
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(function (response) {
-        for (var i = 0; i < response.data.length; i++)
+        for (var i = 0; i < response.data.length; i++) {
             console.log(response.data[i].venue);
         console.log(response.data[i].datetime);
-
+        }
     })
         .catch(function (error) {
             if (error.response) {
@@ -118,14 +117,20 @@ function listenSong(song) {
 
             //API call with movie as part of the URLquery
             axios.get("http://www.omdbapi.com/?t=" + media + "&y=&plot=short&apikey=834c9300").then(function (response) {
-                console.log(response.data.Title);
-                console.log(response.data.Year);
-                console.log(response.data.Ratings[0]);
-                console.log(response.data.Ratings[1]);
-                console.log(response.data.Country);
-                console.log(response.data.Language);
-                console.log(response.data.Plot);
-                console.log(response.data.Actors);
+                // console.log(response.data.Title);
+                // console.log(response.data.Year);
+                // console.log(response.data.Ratings[0]);
+                // console.log(response.data.Ratings[1]);
+                // console.log(response.data.Country);
+                // console.log(response.data.Language);
+                // console.log(response.data.Plot);
+                // console.log(response.data.Actors);
+              console.log(response)
+            
+                 if (response.data.Response === "False") {
+                     
+                    omdbList("Mr. Nobody");
+                 }
             })
                 .catch(function (error) {
                     if (error.response) {
@@ -143,11 +148,8 @@ function listenSong(song) {
                     console.log(error.config);
                 })
 
-            function mrNobody() {
-                if (process.argv[3] == "undefined")
-                    mrNobody("Mr. Nobody");
             }
-        }
+            
 
         //liri do-what-it-says
         function backstreetsback() {
@@ -159,3 +161,4 @@ function listenSong(song) {
                 listenSong(data.split(",")[1]);
             })
         }
+            
