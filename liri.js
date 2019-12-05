@@ -8,6 +8,8 @@ var axios = require('axios');
 
 var Spotify = require("node-spotify-api");
 
+var moment = require("moment");
+
 var spotify = new Spotify(keys.spotify);
 
 var directory = process.argv[2];
@@ -59,8 +61,10 @@ function findShow(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(function (response) {
         for (var i = 0; i < response.data.length; i++) {
             console.log(response.data[i].venue);
-        console.log(response.data[i].datetime);
-        }
+        var datetime = response.data[i].datetime;
+        console.log(moment(datetime).format("MM/DD/YY"));
+       
+    }
     })
         .catch(function (error) {
             if (error.response) {
@@ -117,15 +121,15 @@ function listenSong(song) {
 
             //API call with movie as part of the URLquery
             axios.get("http://www.omdbapi.com/?t=" + media + "&y=&plot=short&apikey=834c9300").then(function (response) {
-                // console.log(response.data.Title);
-                // console.log(response.data.Year);
-                // console.log(response.data.Ratings[0]);
-                // console.log(response.data.Ratings[1]);
-                // console.log(response.data.Country);
-                // console.log(response.data.Language);
-                // console.log(response.data.Plot);
-                // console.log(response.data.Actors);
-              console.log(response)
+                console.log(response.data.Title);
+                console.log(response.data.Year);
+                console.log(response.data.Ratings[0]);
+                console.log(response.data.Ratings[1]);
+                console.log(response.data.Country);
+                console.log(response.data.Language);
+                console.log(response.data.Plot);
+                console.log(response.data.Actors);
+              
             
                  if (response.data.Response === "False") {
                      
