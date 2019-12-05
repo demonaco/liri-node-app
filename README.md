@@ -42,9 +42,24 @@ If a user fails to put in a search for a film or TV show with OMDB, they will ge
 Sources: Class videos, TAs, tutor, class assignments, code drills
 
 Screenshots and Gifs of working project:
+![Searching for a film or movie](https://github.com/demonaco/liri-node-app/blob/master/assets/titanic.gif)
+
+![Searching for a show](https://github.com/demonaco/liri-node-app/blob/master/assets/FindaShow.gif)
+
+![Defaulting to Backstreet Boys ](https://github.com/demonaco/liri-node-app/blob/master/assets/backstreetboys.gif)
+
+![Defaulting to Ace of Base](https://github.com/demonaco/liri-node-app/blob/master/assets/AceofBase.gif)
 
 
+![screenshot of case-switch code](https://github.com/demonaco/liri-node-app/blob/master/assets/Screen%20Shot%202019-12-04%20at%2011.44.13%20PM.png)
 
+![Find show code](https://github.com/demonaco/liri-node-app/blob/master/assets/Screen%20Shot%202019-12-04%20at%2011.44.25%20PM.png)
+
+![Listen song code](https://github.com/demonaco/liri-node-app/blob/master/assets/Screen%20Shot%202019-12-04%20at%2011.44.36%20PM.png)
+
+![OMDB API code](https://github.com/demonaco/liri-node-app/blob/master/assets/Screen%20Shot%202019-12-04%20at%2011.44.46%20PM.png)
+
+![Backstreet Boys code](https://github.com/demonaco/liri-node-app/blob/master/assets/Screen%20Shot%202019-12-04%20at%2011.44.53%20PM.png)
 
 
 
