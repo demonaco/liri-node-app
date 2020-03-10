@@ -25,7 +25,7 @@ var media = process.argv.slice(3).join(" ");
 
 switch (directory) {
     //bands in town function
-    case "Findcle-a-show":
+    case "Find-a-show":
         findShow(media);
         break;
     //spotify function
